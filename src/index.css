@@ -3,15 +3,13 @@
 @import "@fontsource-variable/playfair-display";
 @import "@fontsource-variable/rubik";
 
-@theme inline {
-    --breakpoint--xs: 320px;
-    --breakpoint--sm: 768px;
-    --breakpoint--md: 1152px;
-    --breakpoint--lg: 1440px;
-    --breakpoint--xl: 1920px;
-
-    --color--primary: #FF7757;
-    --color--secondary: #331811;
+@theme {
+    --breakpoint-xs: 320px;
+    --breakpoint-sm: 768px;
+    --breakpoint-md: 1152px;
+    --breakpoint-lg: 1440px;
+    --breakpoint-xl: 1920px;
+    --breakpoint-navCollapse: 837px;
 
     --font-display: 'Rubik', sans-serif;
     --font-heading: 'Playfair Display', serif;
@@ -22,23 +20,17 @@
     --font-size--base: 1rem;
     --font-size--lg: 1.125rem;
     --font-size--xl: 1.25rem;
-
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
     body {
         @apply font-body;
         @apply text-base;
     }
     h1, h2 {
         @apply font-heading;
-    }
-}
-
-@layer utilities {
-    .MuiButton-root {
-        background: var(--color--primary);
-        font: var(--font-body);
-        font-size: var(--font-size--xs);
     }
 }
