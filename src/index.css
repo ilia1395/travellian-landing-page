@@ -1,0 +1,44 @@
+@layer theme, base, mui, components, utilities;
+@import "tailwindcss";
+@import "@fontsource-variable/playfair-display";
+@import "@fontsource-variable/rubik";
+
+@theme inline {
+    --breakpoint--xs: 320px;
+    --breakpoint--sm: 768px;
+    --breakpoint--md: 1152px;
+    --breakpoint--lg: 1440px;
+    --breakpoint--xl: 1920px;
+
+    --color--primary: #FF7757;
+    --color--secondary: #331811;
+
+    --font-display: 'Rubik', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Rubik', sans-serif;
+
+    --font-size--xs: 0.75rem;
+    --font-size--sm: 0.875rem;
+    --font-size--base: 1rem;
+    --font-size--lg: 1.125rem;
+    --font-size--xl: 1.25rem;
+
+}
+
+@layer base {
+    body {
+        @apply font-body;
+        @apply text-base;
+    }
+    h1, h2 {
+        @apply font-heading;
+    }
+}
+
+@layer utilities {
+    .MuiButton-root {
+        background: var(--color--primary);
+        font: var(--font-body);
+        font-size: var(--font-size--xs);
+    }
+}
