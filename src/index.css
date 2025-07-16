@@ -9,11 +9,7 @@
     --breakpoint-md: 1152px;
     --breakpoint-lg: 1440px;
     --breakpoint-xl: 1920px;
-    --breakpoint-navCollapse: 837px;
-
-    --font-display: 'Rubik', sans-serif;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Rubik', sans-serif;
+    --breakpoint-navCollapse: 921px;
 
     --font-size--xs: 0.75rem;
     --font-size--sm: 0.875rem;
@@ -25,12 +21,5 @@
 @layer base {
     html {
         scroll-behavior: smooth;
-    }
-    body {
-        @apply font-body;
-        @apply text-base;
-    }
-    h1, h2 {
-        @apply font-heading;
     }
 }
