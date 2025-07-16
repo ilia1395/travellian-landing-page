@@ -44,7 +44,7 @@ export default function NavBar() {
           inheritViewBox
           className="
             h-[27.52px] w-[140px]
-            sm:h-[45.61px] w-[234px]
+            sm:h-[45.61px] sm:w-[234px]
             "
         />
         <Box className="hidden navCollapse:flex flex-row gap-8 items-center">
