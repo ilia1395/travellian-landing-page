@@ -1,29 +1,44 @@
-import NavBar from './components/NavBar'
 import Typography from '@mui/material/Typography'
-import MyContainer from './components/Container'
 import Box from '@mui/material/Box'
+
+import NavBar from './components/NavBar'
+import MyContainer from './components/Container'
+import BookMenu from './components/BookMenu'
 
 export default function App() {
 
   return (
     <>
-      <section 
-        id='home' 
-        className="
-        h-[1194px] 
-        bg-[url('/hero-background.jpg')] 
-        bg-no-repeat 
-        bg-[position:25%_50%]
-        bg-[length:auto_1320px]"
-      >
+      <section className="relative h-[120vh] overflow-hidden">
+        <img
+          src="/hero-background.jpg"
+          alt="Hero"
+          className="
+            absolute 
+            top-0 
+            left-0 
+            w-full 
+            h-full 
+            object-cover 
+            z-[-1]"
+        />
         <MyContainer>
           <Box sx={{ gridColumn: '1 / -1' }}>
             <NavBar />
           </Box>
-           <Box sx={{ gridColumn: { xs: '1 / -1', md: 'span 6' } }}>
-            <Typography variant='h1' color='secondary.contrastText'>Hero section</Typography>
+           <Box sx={{ gridColumn: { xs: '1 / -1', md: 'span 6' }, pt: ['100px', '100px', '72px', '142px'] }}>
+            <Typography variant='h1' color='secondary.contrastText'>
+              Start your unforgettable 
+              journey with us.
+            </Typography>
+            <Typography variant='h2' color='secondary.contrastText' sx={{ pt: 2}}>
+              The best travel for your jouney begins now
+            </Typography>
           </Box>
-        </MyContainer>   
+        </MyContainer>
+        <Box sx={{ position: 'absolute', pt: ['100px', '100px', '140px', '170px'], p:{xs: '16px'}, pl:{sm: 0}}}>
+          <BookMenu />
+        </Box>
       </section>
       <section id='explore' className="h-[400px]">
         <Typography variant='h1'>Destinations section</Typography>

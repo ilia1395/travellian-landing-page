@@ -81,7 +81,6 @@ export default function NavBar() {
         <Box className="hidden navCollapse:flex flex-row gap-8 items-center">
             <Button 
               sx={{
-                textTransform: 'none',
                 color: 'white',
               }}
             >
@@ -91,7 +90,6 @@ export default function NavBar() {
               variant='contained'
               color='primary'
               sx={{ 
-                textTransform: 'none',
                 width: '134px',
                 height: '64px'
               }}

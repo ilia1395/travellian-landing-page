@@ -1,3 +1,4 @@
+import { inputLabelClasses } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 
 let theme = createTheme({
@@ -29,7 +30,7 @@ let theme = createTheme({
         },
     },
     typography: {
-        fontFamily: 'Rubik',
+        fontFamily: 'Rubik, serif',
         fontSize: 16,
         color: 'white',
         h1: { 
@@ -42,7 +43,7 @@ let theme = createTheme({
             fontSize: '18px',
             color: '#767E86'
         },
-        button: { fontSize: '20px' },
+        button: { fontSize: '20px', textTransform: 'capitalize'},
     },
     shape: { borderRadius: 12 },
     components: {
@@ -50,7 +51,7 @@ let theme = createTheme({
             styleOverrides: {
                 root: {
                 fontSize: '20px',
-                fontFamily: 'Rubik',
+                fontFamily: 'Rubik, serif',
                 },
             },
         },
@@ -70,6 +71,33 @@ theme = createTheme(theme, {
       [theme.breakpoints.up('md')]: { fontSize: '24px' },
     },
   },
+  components: {
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '14px',
+          fontFamily: 'Rubik, serif',
+          color: '#767E86',
+          [theme.breakpoints.up('sm')]: { fontSize: '16px' },
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontSize: '14px',
+          [theme.breakpoints.up('sm')]: { fontSize: '16px' },
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          fontSize: '14px',
+          [theme.breakpoints.up('sm')]: { fontSize: '16px' },
+        },
+      },
+    },
+  },
 });
-
 export default theme;
