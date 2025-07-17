@@ -95,6 +95,8 @@ theme = createTheme(theme, {
         root: {
           fontSize: '14px',
           [theme.breakpoints.up('sm')]: { fontSize: '16px' },
+          [theme.breakpoints.up('md')]: { fontSize: '18px' },
+          [theme.breakpoints.up('lg')]: { fontSize: '20px' },
         },
       },
     },

@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  Button,
-  FormControl,
-  InputLabel,
-  Stack,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Stack from '@mui/material/Stack';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -31,6 +29,8 @@ export default function BookingForm() {
         <Stack
             direction={{ xs: 'column', sm: 'row' }}
             flexWrap="wrap"
+            justifyContent="center"
+            alignItems={{ md: "center" }}
             sx={{ 
                 bgcolor: 'white',
                 height: {sm: '216px', md: '176px', lg:'216px'},
@@ -41,7 +41,7 @@ export default function BookingForm() {
             }}
         >
             {/* Selects */}
-            <FormControl variant="standard" sx={{ minWidth: 120, flex: 1}}>
+            <FormControl variant="standard" sx={{ minWidth: '120px', flex: 1}}>
             <InputLabel>Destination</InputLabel>
             <Select
                 value={destination}
@@ -53,7 +53,7 @@ export default function BookingForm() {
             </Select>
             </FormControl>
 
-            <FormControl variant="standard" sx={{ minWidth: 100, flex: 1}}>
+            <FormControl variant="standard" sx={{ minWidth: '120px', flex: 1}}>
             <InputLabel>Person</InputLabel>
             <Select
                 value={person}
@@ -67,9 +67,9 @@ export default function BookingForm() {
 
             {/* Date Pickers - Оборачиваем в отдельный Stack для sm*/}
             <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={2}
-            flex={2}
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={2}
+                flex={2}
             >
             <DatePicker
                 label="Check In"
