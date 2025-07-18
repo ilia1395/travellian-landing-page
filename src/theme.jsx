@@ -39,7 +39,7 @@ let theme = createTheme({
             color: '#172432'
         },
         h2: { 
-            fontFamily: 'Playfair Display, serif',
+            fontFamily: 'Rubik, serif',
             fontSize: '18px',
             color: '#767E86'
         },
@@ -55,6 +55,98 @@ let theme = createTheme({
                 },
             },
         },
+        MuiSvgIcon: {
+          styleOverrides: {
+            root: {
+              fontSize: '16px', 
+              color: '#ffffff',
+            },
+          },
+        },
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              fontSize: '20px',
+              textTransform: 'capitalize',
+              color: 'white',
+              boxShadow: 'none'
+            },
+          },
+        },
+        MuiIconButton: {
+          styleOverrides: {
+            root: {
+              padding: 0,
+              '& .MuiSvgIcon-root': {
+                fontSize: '24px',
+                color: '#ffffff',
+              },
+              '&:active .MuiSvgIcon-root': {
+                color: '#FF7757',
+              },
+            },
+          },
+        },
+        MuiFormLabel: {
+          styleOverrides: {
+            root: {
+              fontSize: '14px',
+              fontFamily: 'Rubik, serif',
+              color: '#767E86',
+              textTransform: 'uppercase',
+            }
+          }
+        },
+        MuiMenuItem: {
+          styleOverrides: {
+            root: {
+              fontSize: '14px',
+            }
+          }
+        },
+        MuiSelect: {
+          styleOverrides: {
+            root: {
+              fontSize: '14px',
+            }
+          }
+        },
+        MuiRadio: {
+          styleOverrides: {
+            root: {
+              padding: 0,
+              paddingTop: '24px',
+              color: '#ffffff',
+              '&.Mui-checked': {
+                color: '#FF7757',
+              },
+            },
+          },
+          defaultProps: {
+            icon: (
+              <span
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  borderRadius: '50%',
+                  backgroundColor: '#ffffff',
+                  display: 'inline-block',
+                }}
+              />
+            ),
+            checkedIcon: (
+              <span
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  borderRadius: '50%',
+                  backgroundColor: '#FF7757',
+                  display: 'inline-block',
+                }}
+              />
+            ),
+          },
+        },
     },
 });
 
@@ -64,6 +156,7 @@ theme = createTheme(theme, {
       ...theme.typography.h1,
       [theme.breakpoints.up('sm')]: { fontSize: '54px' },
       [theme.breakpoints.up('md')]: { fontSize: '64px' },
+      [theme.breakpoints.up('lg')]: { fontSize: '84px' },
     },
     h2: {
       ...theme.typography.h2,
@@ -75,9 +168,7 @@ theme = createTheme(theme, {
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          fontSize: '14px',
-          fontFamily: 'Rubik, serif',
-          color: '#767E86',
+          ...theme.components.MuiFormLabel.styleOverrides.root,
           [theme.breakpoints.up('sm')]: { fontSize: '16px' },
         },
       },
@@ -85,7 +176,7 @@ theme = createTheme(theme, {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          fontSize: '14px',
+          ...theme.components.MuiMenuItem.styleOverrides.root,
           [theme.breakpoints.up('sm')]: { fontSize: '16px' },
         },
       },
@@ -93,13 +184,13 @@ theme = createTheme(theme, {
     MuiSelect: {
       styleOverrides: {
         root: {
-          fontSize: '14px',
+          ...theme.components.MuiSelect.styleOverrides.root,
           [theme.breakpoints.up('sm')]: { fontSize: '16px' },
           [theme.breakpoints.up('md')]: { fontSize: '18px' },
           [theme.breakpoints.up('lg')]: { fontSize: '20px' },
         },
       },
     },
-  },
+  }
 });
 export default theme;

@@ -65,7 +65,7 @@ export default function BookingForm() {
             </Select>
             </FormControl>
 
-            {/* Date Pickers - Оборачиваем в отдельный Stack для sm*/}
+            {/* Date Pickers */}
             <Stack
                 direction={{ xs: 'column', sm: 'row' }}
                 spacing={2}
@@ -101,18 +101,19 @@ export default function BookingForm() {
         <Grid size={{xs: 12, sm: 2, md: 2}}>
         <Box>
             <Button
-            variant="contained"
-            fullWidth
-            sx={{
-                height: {sm: '216px', md: '176px', lg:'216px'},
-                fontSize: '36px',
-                borderTopRightRadius: {xs: '0', sm: '16px'},
-                borderBottomRightRadius: {xs: '16px', sm: '16px'},
-                borderTopLeftRadius: {xs: '0', sm: '0'},
-                borderBottomLeftRadius: {xs: '16px', sm: '0'},
-            }}
+              variant="contained"
+              fullWidth
+              sx={{
+                  height: {sm: '216px', md: '176px', lg:'216px'},
+                  fontSize: '36px',
+                  textAlign:'left',
+                  borderTopRightRadius: {xs: '0', sm: '16px'},
+                  borderBottomRightRadius: {xs: '16px', sm: '16px'},
+                  borderTopLeftRadius: {xs: '0', sm: '0'},
+                  borderBottomLeftRadius: {xs: '16px', sm: '0'},
+              }}
             >
-            Book Now →
+              Book Now →
             </Button>
         </Box>
         </Grid>

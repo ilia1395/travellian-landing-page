@@ -28,24 +28,28 @@ export default function NavBar() {
   };
 
   return ( 
-    <AppBar position="static" color='transparent' variant='transparent'>
-      <Toolbar 
-        className='
-          h-[98px]
-          flex
-          flex-row
-          justify-between
-          p-4
-          sm:h-[114px]  
-          lg:h-[128px]'
+    <AppBar position="static" color='transparent' variant='transparent' sx={{ padding:'0' }}>
+      <Toolbar
+        disableGutters
+        sx={{
+          height: { xs:'98px', sm:'114px', lg:'128px' },
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignContent: 'center',
+          padding:'0',
+          paddingLeft:'0',
+          paddingRight:'0'
+        }}
       > 
         <SvgIcon 
           component={LogoIcon} 
           inheritViewBox
-          className="
-            h-[27.52px] w-[140px]
-            sm:h-[45.61px] sm:w-[234px]
-            "
+          sx={{
+            height:{xs:'27.52px', sm:'45.61px'},
+            width:{xs:'140px', sm:'234px'},
+            padding:'0'
+          }}
         />
         <Box className="hidden navCollapse:flex flex-row gap-8 items-center">
           {mainPages.map((page) => (
@@ -79,16 +83,11 @@ export default function NavBar() {
           ))}
         </Box>
         <Box className="hidden navCollapse:flex flex-row gap-8 items-center">
-            <Button 
-              sx={{
-                color: 'white',
-              }}
-            >
+            <Button variant='text'>
               Login
             </Button>
             <Button
               variant='contained'
-              color='primary'
               sx={{ 
                 width: '134px',
                 height: '64px'
@@ -99,8 +98,8 @@ export default function NavBar() {
         </Box>
 
         <Box className="flex navCollapse:hidden">
-          <IconButton onClick={handleOpen} color="inherit">
-            <MenuIcon sx={{ width: '50px', height: '50px', color: 'white' }}/>
+          <IconButton onClick={handleOpen} color="inherit" sx={{ padding:'0' }}>
+            <MenuIcon sx={{ width: '50px', height: '50px', color: 'white'}}/>
           </IconButton>
           <Menu
             anchorEl={anchorEl}
@@ -118,7 +117,7 @@ export default function NavBar() {
                 </Link>
               </MenuItem>
             ))}
-            {/* // TODO login, signup pages */}
+
             <Divider/>
             <MenuItem onClick={handleClose}><Link underline='none' color='inherit'>Login</Link></MenuItem>
             <MenuItem onClick={handleClose}><Link underline='none' color='inherit'>SignUp</Link></MenuItem>
