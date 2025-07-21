@@ -55,14 +55,6 @@ let theme = createTheme({
                 },
             },
         },
-        MuiSvgIcon: {
-          styleOverrides: {
-            root: {
-              fontSize: '16px', 
-              color: '#ffffff',
-            },
-          },
-        },
         MuiButton: {
           styleOverrides: {
             root: {
@@ -73,15 +65,38 @@ let theme = createTheme({
             },
           },
         },
+        MuiSvgIcon: {
+          styleOverrides: {
+            root: {
+              fontSize: '16px',
+              color: '#ffffff',
+            },
+          },
+        },
+
         MuiIconButton: {
           styleOverrides: {
             root: {
               padding: 0,
               '& .MuiSvgIcon-root': {
-                fontSize: '24px',
+                fontSize: '24px', 
                 color: '#ffffff',
               },
               '&:active .MuiSvgIcon-root': {
+                color: '#FF7757',
+              },
+            },
+          },
+        },
+
+        MuiInputAdornment: {
+          styleOverrides: {
+            root: {
+              // Icon style in DatePicker input field
+              '& .MuiIconButton-root .MuiSvgIcon-root': {
+                color: '#767E86',
+              },
+              '& .MuiIconButton-root:active .MuiSvgIcon-root': {
                 color: '#FF7757',
               },
             },

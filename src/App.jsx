@@ -5,24 +5,23 @@ import NavBar from './components/NavBar'
 import MyContainer from './components/Container'
 import BookMenu from './components/BookMenu'
 import HeroCarousel from './components/HeroCarousel'
+import Divider from '@mui/material/Divider'
 
 export default function App() {
 
   return (
     <>
-      <Box
-        component="section" 
+      <Box component="section" id="home" 
         sx={{
           position:'relative',
           padding:'0',
-          paddingBottom:{xs:'795px', sm:'391px', md:'466px', lg:'656px'},
-          overflow:'hidden'
+          height:{xs:'1210px', sm:'789px', md:'880px', lg:'1194px'},
         }}
       >
         <MyContainer>
           <Box 
             sx={{ 
-              gridColumn: '1 / -1' 
+              gridColumn: '1 / -1',
               }}
           >
             <NavBar />
@@ -31,7 +30,8 @@ export default function App() {
            <Box
             sx={{ 
               gridColumn: {xs:'1 / -1', sm:'1 / -2', md:'1 / -5'}, 
-              paddingTop: {xs:'100px', sm:'100px', md:'72px', lg:'142px'} 
+              paddingTop: {xs:'100px', sm:'100px', md:'72px', lg:'142px'},
+              alignSelf: 'start',
               }}
           >
             <Typography variant='h1' color='secondary.contrastText'>
@@ -42,34 +42,55 @@ export default function App() {
               The best travel for your jouney begins now
             </Typography>
           </Box>
-
+          
           <Box 
             sx={{ 
               gridColumn: {sm:'8 / -2', md:'-2 / -1'},
               justifySelf: 'end',
               width: '16px',
-              padding: 0, 
-              paddingTop: {sm:'100px', md:'166px', lg:'176px', xl:'355px'}, 
+              paddingTop: {sm:'100px', md:'166px', lg:'176px', xl:'355px'},
             }}
           >
             <HeroCarousel/>
           </Box>
-
         </MyContainer>
 
         <Box sx={{ 
           position: 'absolute', 
-          padding:{xs: '16px'},
-          paddingTop: {xs:'100px', sm:'100px', md:'140px', lg:'170px'}, 
-          paddingLeft:{sm: 0}, 
-          paddingBottom:0 
+          padding:{xs: '16px', sm: '0'},
+          marginTop: {xs:'100px', sm:'0'}, 
           }}
         >
           <BookMenu />
         </Box>
       </Box>
-      <Box component="section" id='explore' className="h-[400px]">
-        <Typography variant='h1'>Destinations section</Typography>
+      <Box component="section" id='explore' 
+        sx={{
+          position: 'relative',
+          padding: '0',
+          height:{xs:'961px', sm:'1048px', md:'1154px', lg:'1206px'},
+        }}
+      >
+        <MyContainer>
+          <Box
+            sx={{
+              gridColumn: '1 / -1',
+              paddingTop: '80px'
+            }}
+          >
+            <Typography variant='h1' textAlign='left'>Popular Destinations</Typography>
+            <Divider 
+              sx={{ 
+                marginTop: '20px',
+                backgroundColor: 'primary.main',
+                width: {xs: '227px', sm: '365px'},
+                height: '3px',
+              }}
+            />
+            <Typography variant='h2' textAlign='left' paddingTop="32px">Most popular destinations around the world, from historical places to natural wonders.</Typography>
+          </Box>
+        </MyContainer>
+        
       </Box>
       <Box component="section" id='travel' className="h-[400px]">
         <Typography variant='h1'>Special offer section</Typography>

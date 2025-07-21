@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Select from '@mui/material/Select';
@@ -7,25 +8,59 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Stack from '@mui/material/Stack';
+
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function BookingForm() {
   const [destination, setDestination] = useState('Dubai');
   const [person, setPerson] = useState(2);
   const [checkIn, setCheckIn] = useState(dayjs());
   const [checkOut, setCheckOut] = useState(dayjs().add(1, 'month'));
+  const [showForm, setShowForm] = useState(false)
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  useEffect(() => {
+    setShowForm(isMobile);
+  }, [isMobile])
+
+  function handleClick() {
+    console.log('Booking setup done')
+  }
+
+  const hoverProps = !isMobile
+  ? {
+      onMouseEnter: () => setShowForm(true),
+      onMouseLeave: () => setShowForm(false),
+      }
+  : {};
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <Grid
-        container
-        alignItems="center"
-    >
+    <Grid container alignItems="center">
         {/* Form Fields */}
-        <Grid size={{xs: 12, sm: 9, md: 10}}>
+        <Grid 
+            {...hoverProps}
+            size={{xs: 12, sm: 9, md: 10}}
+            sx={{
+                overflow: 'hidden',
+                // display: showForm ? 'box' : 'flex',
+                maxWidth: showForm ? {sx: 'auto', sm: '489px', md: '886px', lg: '1035px', xl: '1303px'} : '0',
+                maxHeight: showForm ? {sx: '467px', sm: '216px', md: '176px', lg: '216px'} : '0',
+                transition: {
+                    sm: 'max-width 0.25s ease-out',
+                    md: 'max-width 0.5s ease-out'
+                    },
+                alignSelf: 'flex-start',
+            }}
+        >
         <Stack
             direction={{ xs: 'column', sm: 'row' }}
             flexWrap="wrap"
@@ -75,6 +110,7 @@ export default function BookingForm() {
                 label="Check In"
                 value={checkIn}
                 onChange={(newValue) => setCheckIn(newValue)}
+                closeOnSelect= {true}
                 slotProps={{
                 textField: {
                     fullWidth: true,
@@ -86,6 +122,7 @@ export default function BookingForm() {
                 label="Check Out"
                 value={checkOut}
                 onChange={(newValue) => setCheckOut(newValue)}
+                closeOnSelect= {true}
                 slotProps={{
                 textField: {
                     fullWidth: true,
@@ -99,18 +136,28 @@ export default function BookingForm() {
 
         {/* Button */}
         <Grid size={{xs: 12, sm: 2, md: 2}}>
-        <Box>
+        <Box
+            {...hoverProps}
+            sx={{
+                height: { sm: '216px', md: '176px', lg: '216px' },
+                width: { sx: 'auto', sm: '170px'},
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}
+        >
             <Button
               variant="contained"
               fullWidth
+              onClick = {handleClick}
               sx={{
-                  height: {sm: '216px', md: '176px', lg:'216px'},
-                  fontSize: '36px',
-                  textAlign:'left',
-                  borderTopRightRadius: {xs: '0', sm: '16px'},
-                  borderBottomRightRadius: {xs: '16px', sm: '16px'},
-                  borderTopLeftRadius: {xs: '0', sm: '0'},
-                  borderBottomLeftRadius: {xs: '16px', sm: '0'},
+                height: '100%',   
+                fontSize: '36px',
+                textAlign:'left',
+                borderTopRightRadius: {xs: '0', sm: '16px'},
+                borderBottomRightRadius: {xs: '16px', sm: '16px'},
+                borderTopLeftRadius: {xs: '0', sm: '0'},
+                borderBottomLeftRadius: {xs: '16px', sm: '0'},
               }}
             >
               Book Now →

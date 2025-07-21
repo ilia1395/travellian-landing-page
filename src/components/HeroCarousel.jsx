@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Radio from '@mui/material/Radio';
-import Button from '@mui/material/Button';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import IconButton from '@mui/material/IconButton';
@@ -72,8 +71,11 @@ export default function HeroCarousel() {
           justifyContent: 'center',
           alignItems: 'center'
         }} 
-      >
-        <Stack direction="column" alignItems="flex-end">
+        >
+        <Stack 
+          direction="column" 
+          alignItems="flex-end" 
+        >
           {Object.keys(heroImages).map((key) => (
             <Radio
               key={key}
