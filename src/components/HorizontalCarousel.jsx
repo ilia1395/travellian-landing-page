@@ -4,37 +4,22 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { useTheme } from '@mui/material/styles'; 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'; 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'; 
 
-import Card from './Cards/PupularDestinations';
+import Card from './Cards/PopularDestinationsCard';
 
 export default function HorizontalCarousel() {
   const [allCards, setAllCards] = useState([]);
   const theme = useTheme();
 
-  const [cardsPerPage, setCardsPerPage] = useState(1); 
-  const [loopCarousel, setLoopCarousel] = useState(false); 
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  useEffect(() => {
-    const updateCarouselSettings = () => {
-      if (window.innerWidth >= theme.breakpoints.values.md) {
-        setCardsPerPage(3); 
-        setLoopCarousel(true); 
-      } else {
-        setCardsPerPage(1); 
-        setLoopCarousel(false);
-      }
-    };
-
-    updateCarouselSettings();
-
-    window.addEventListener('resize', updateCarouselSettings);
-
-    return () => window.removeEventListener('resize', updateCarouselSettings);
-  }, [theme.breakpoints.values.md]);
+  const cardsPerPage = isMobile ? 1 : 3; 
+  const loopCarousel = !isMobile;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start', 
@@ -102,7 +87,7 @@ export default function HorizontalCarousel() {
         alignItems: 'center',
         justifyContent: 'center',
         height: 'auto',
-        py: 4,
+        py: '100px',
         position: 'relative',
         // Стили для растягивания карусели на всю ширину экрана
         width: '100vw', // Занимаем 100% ширины вьюпорта
@@ -110,96 +95,13 @@ export default function HorizontalCarousel() {
         overflow: 'hidden', // Скрываем все, что выходит за пределы, чтобы избежать горизонтального скролла
       }}
     >
-      {/* Контейнер карусели (Viewport Embla) */}
-      <Box
-        ref={emblaRef} // Прикрепляем emblaRef к этому элементу
-        sx={{
-          overflow: 'hidden', // Скрываем выходящие за границы слайды
-          width: '100%', // Вьюпорт всегда 100% от родительского Box
-          position: 'relative', // Для позиционирования кнопок навигации сверху справа
-          paddingTop: '32px'
-        }}
-      >
-        {/* Внутренний контейнер слайдов Embla */}
-        <Box
-          sx={{
-            display: 'flex', // Embla использует flexbox для расположения слайдов
-          }}
-        >
-          {carouselPages.map((pageOfCards, pageIndex) => (
-            <Box
-              key={`carousel-page-${pageIndex}`}
-              sx={{
-                flexShrink: 0,
-                flexGrow: 0,
-                flexBasis: '100%', 
-                minWidth: 0, 
-                padding: 1
-              }}
-              role="group"
-              aria-roledescription="slide"
-            >
-              {/* Stack для расположения карточек внутри одной "страницы" */}
-              <Stack
-                direction="row"
-                alignContent="center"
-                justifyContent="center"
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  // Увеличение фона карточки при наведении
-                  '& .MuiCard-root': { // Селектор для корневого элемента вашей карточки
-                    transition: 'transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-                    '&:hover': {
-                      transform: 'scale(1.03)',
-                      backgroundColor: 'rgba(0, 0, 0, 0.05)',
-                      
-                    },
-                  },
-                }}
-              >
-                {pageOfCards.map((card, cardIndex) => (
-                  <Box
-                    key={`card-${pageIndex}-${cardIndex}`}
-                    sx={{
-                      flexShrink: 0,
-                      flexGrow: 1,
-                      minWidth: {
-                        xs: '100%',
-                        md: `${100 / cardsPerPage}%`
-                      },
-                      maxWidth: {
-                        xs: '100%',
-                        md: `${100 / cardsPerPage}%`
-                      },
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      pr: {
-                        xs: 0, // На мобильных нет правого паддинга
-                        md: cardIndex < cardsPerPage - 1 ? 2 : 0, // Только между карточками
-                      }
-                    }}
-                  >
-                    {card}
-                  </Box>
-                ))}
-              </Stack>
-            </Box>
-          ))}
-        </Box>
-      </Box>
-
-      {/* Кнопки навигации для мобильных (снизу) */}
+            {/* Кнопки навигации для мобильных (снизу) */}
       <Stack
         direction="row"
-        spacing={2}
+        spacing={1}
         sx={{
           mt: 3, // Отступ сверху от карусели
-          display: {
-            xs: 'flex', // Показываем на мобильных
-            md: 'none', // Скрываем на десктопе
-          },
+          display: isMobile ? 'flex' : 'none',
           justifyContent: 'center',
           width: '100%',
         }}
@@ -210,10 +112,6 @@ export default function HorizontalCarousel() {
           sx={{
             height: 60,
             width: 66,
-            boxShadow: 'none',
-            '&:hover': {
-              boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
-            }
           }}
           disabled={!canScrollPrev}
         >
@@ -235,27 +133,21 @@ export default function HorizontalCarousel() {
       {/* Кнопки навигации для десктопа (сверху справа) */}
       <Stack
         direction="row"
-        spacing={1} // Отступ между кнопками
+        spacing={1}
         sx={{
-          display: {
-            xs: 'none', // Скрываем на мобильных
-            md: 'flex', // Показываем на десктопе
-          },
+          display: isMobile ? 'none' : 'box',
           position: 'absolute',
-          top: 10, // Отступ сверху от родительского Box
-          right: 10, // Отступ справа от родительского Box
-          // Если родительский Box имеет padding, возможно, потребуется корректировка
-          // Например, right: `calc(10px + ${theme.spacing(2)})` если paddingX: 2
+          right: '32px',
+          top: 0
         }}
       >
         <Button
           onClick={scrollPrev}
           variant="contained"
           sx={{
-            height: 36, // Меньший размер для десктопных кнопок
-            width: 36,
-            minWidth: 0, // Убираем минимальную ширину для круглых кнопок
-            padding: 0, // Убираем паддинг
+            height: '66px',
+            width: '60px',
+            padding: 0
           }}
           disabled={!canScrollPrev}
         >
@@ -265,16 +157,66 @@ export default function HorizontalCarousel() {
           onClick={scrollNext}
           variant="contained"
           sx={{
-            height: 36,
-            width: 36,
-            minWidth: 0,
-            padding: 0,
+            height: '66px',
+            width: '60px',
+            padding: 0
           }}
           disabled={!canScrollNext}
         >
           <NavigateNextIcon />
         </Button>
       </Stack>
+      
+      {/* Контейнер карусели (Viewport Embla) */}
+      <Box
+        ref={emblaRef} // Прикрепляем emblaRef к этому элементу
+        sx={{
+          overflow: 'hidden', // Скрываем выходящие за границы слайды
+          width: '100%', // Вьюпорт всегда 100% от родительского Box
+          position: 'relative', // Для позиционирования кнопок навигации сверху справа
+        }}
+      >
+        {/* Внутренний контейнер слайдов Embla */}
+        <Box
+          sx={{
+            display: 'flex', // Embla использует flexbox для расположения слайдов
+          }}
+        >
+          {carouselPages.map((pageOfCards, pageIndex) => (
+            <Box
+              key={`carousel-page-${pageIndex}`}
+              sx={{
+                flexShrink: 0,
+                flexGrow: 0,
+                flexBasis: isMobile ? '100%' : 'none', 
+                minWidth: 0, 
+                padding: 1
+              }}
+              role="group"
+              aria-roledescription="slide"
+            >
+              {/* Stack для расположения карточек внутри одной "страницы" */}
+              <Stack direction="row">
+                {pageOfCards.map((card, cardIndex) => (
+                  <Box
+                    key={`card-${pageIndex}-${cardIndex}`}
+                    sx={{
+                      flexShrink: 0,
+                      flexGrow: 1,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      pr: isMobile ? 0 : (cardIndex < cardsPerPage - 1 ? 2 : 0)
+                    }}
+                  >
+                    {card}
+                  </Box>
+                ))}
+              </Stack>
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 }
