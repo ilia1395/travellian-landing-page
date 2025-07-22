@@ -5,6 +5,8 @@ import NavBar from './components/NavBar'
 import MyContainer from './components/Container'
 import BookMenu from './components/BookMenu'
 import HeroCarousel from './components/HeroCarousel'
+import HorizontalCarousel from './components/HorizontalCarousel'
+
 import Divider from '@mui/material/Divider'
 
 export default function App() {
@@ -88,8 +90,10 @@ export default function App() {
               }}
             />
             <Typography variant='h2' textAlign='left' paddingTop="32px">Most popular destinations around the world, from historical places to natural wonders.</Typography>
+            
           </Box>
         </MyContainer>
+        <HorizontalCarousel />
         
       </Box>
       <Box component="section" id='travel' className="h-[400px]">
