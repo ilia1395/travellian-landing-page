@@ -5,14 +5,13 @@ import NavBar from './components/NavBar'
 import MyContainer from './components/Container'
 import BookMenu from './components/BookMenu'
 import HeroCarousel from './components/HeroCarousel'
-import HorizontalCarousel from './components/HorizontalCarousel'
-
-import Divider from '@mui/material/Divider'
+import CarouselDataMapper from './components/CarouselDataMapper'
 
 export default function App() {
 
   return (
     <>
+      {/* Hero Section */}
       <Box component="section" id="home" 
         sx={{
           position:'relative',
@@ -36,11 +35,11 @@ export default function App() {
               alignSelf: 'start',
               }}
           >
-            <Typography variant='h1' color='secondary.contrastText'>
+            <Typography variant='h1' color='secondary.contrastText' gutterBottom>
               Start your unforgettable 
               journey with us.
             </Typography>
-            <Typography variant='h2' color='secondary.contrastText' sx={{ pt: 2}}>
+            <Typography variant='h2' color='secondary.contrastText'>
               The best travel for your jouney begins now
             </Typography>
           </Box>
@@ -66,35 +65,17 @@ export default function App() {
           <BookMenu />
         </Box>
       </Box>
+      {/* Explore Section */}
       <Box component="section" id='explore' 
         sx={{
           position: 'relative',
-          padding: '0',
-          height:{xs:'961px', sm:'1048px', md:'1154px', lg:'1206px'},
+          padding:'0',
         }}
       >
         <MyContainer>
-          <Box
-            sx={{
-              gridColumn: '1 / -1',
-              paddingTop: '80px'
-            }}
-          >
-            <Typography variant='h1' textAlign='left'>Popular Destinations</Typography>
-            <Divider 
-              sx={{ 
-                marginTop: '20px',
-                backgroundColor: 'primary.main',
-                width: {xs: '227px', sm: '365px'},
-                height: '3px',
-              }}
-            />
-            <Typography variant='h2' textAlign='left' paddingTop="32px">Most popular destinations around the world, from historical places to natural wonders.</Typography>
-            
-          </Box>
+          {/* Carousel */}
+          <CarouselDataMapper type='popular-destinations'/>
         </MyContainer>
-        <HorizontalCarousel />
-        
       </Box>
       <Box component="section" id='travel' className="h-[400px]">
         <Typography variant='h1'>Special offer section</Typography>

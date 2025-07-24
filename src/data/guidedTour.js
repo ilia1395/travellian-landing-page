@@ -1,0 +1,42 @@
+export default [
+  {
+    id: 1,
+    country: 'Italy',
+    city: 'Rome',
+    type: 'Historical Tour',
+    price: '€85/Day',
+    title: 'Ancient Rome Walk',
+    rating: 4,
+    time: '5 Days tour'
+  },
+  {
+    id: 2,
+    country: 'France',
+    city: 'Paris',
+    type: 'Guided Tour',
+    price: '€99/Day',
+    title: 'Paris City Tour',
+    rating: 5,
+    time: '7 Days tour'
+  },
+  {
+    id: 3,
+    country: 'Spain',
+    city: 'Madrid',
+    type: 'Cultural Tour',
+    price: '€89/Day',
+    title: 'Madrid Highlights',
+    rating: 4,
+    time: '6 Days tour'
+  },
+  {
+    id: 4,
+    country: 'Hungary',
+    city: 'Budapest',
+    type: 'Architecture Tour',
+    price: '€79/Day',
+    title: 'Budapest Discovery',
+    rating: 4,
+    time: '4 Days tour'
+  }
+]
