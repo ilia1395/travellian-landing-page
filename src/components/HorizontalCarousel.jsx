@@ -1,68 +1,44 @@
-import { useEffect, useState, useCallback } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { useEffect, useState, useCallback } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import { usePrevNextButtons } from './HorizontalCarouselButtons'
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
+import { useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'; 
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'; 
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 
-export default function HorizontalCarousel({ cards }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start', loop: true });
+export default function HorizontalCarousel({ cards, direction, title, detail }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start' }, [Autoplay()])
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   // console.log(isMobile)
 
-  const cardsPerPage = isMobile ? 1 : 3;
+  const onNavButtonClick = useCallback((emblaApi) => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay) return
 
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
+    const resetOrStop =
+      autoplay.options.stopOnInteraction === false
+        ? autoplay.reset
+        : autoplay.stop
 
-  const totalPages = Math.ceil(cards.length / cardsPerPage);
-  const carouselPages = [];
+    resetOrStop()
+  }, [])
 
-  for (let i = 0; i < totalPages; i++) {
-    const startIndex = i * cardsPerPage;
-    const endIndex = startIndex + cardsPerPage;
-    carouselPages.push(cards.slice(startIndex, endIndex));
-  }
-
-  const scrollPrev = useCallback(() => {
-    emblaApi && emblaApi.scrollPrev(); 
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    emblaApi && emblaApi.scrollNext(); 
-  }, [emblaApi]);
-
-  const onSelect = useCallback((api) => {
-    setCanScrollPrev(api.canScrollPrev());
-    setCanScrollNext(api.canScrollNext());
-  }, []);
-
-  // Добавляем слушателей событий Embla Carousel
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    // Устанавливаем начальное состояние кнопок
-    onSelect(emblaApi);
-
-    // Подписываемся на события 'reInit' (при изменении размеров) и 'select' (при смене слайда)
-    emblaApi.on('reInit', onSelect);
-    emblaApi.on('select', onSelect);
-
-    // Функция очистки при размонтировании компонента
-    return () => {
-      emblaApi.off('select', onSelect);
-      emblaApi.off('reInit', onSelect);
-    };
-  }, [emblaApi, onSelect]);
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi, onNavButtonClick)
 
   return (
     <Box
@@ -78,12 +54,13 @@ export default function HorizontalCarousel({ cards }) {
       {/* Title & Navigation buttons */}
       <Box
         display={'flex'}
-        flexDirection= 'row'
-        justifyContent={'space-between'}
+        gap={'50%'}
+        flexDirection= {direction}
+        justifyContent={'space-around'}
       >
         {/* Title */}
         <Box>
-          <Typography variant='h1' textAlign='left'gutterBottom>Popular Destinations</Typography>
+          <Typography variant='h1' textAlign='left'gutterBottom>{title}</Typography>
           <Divider 
             sx={{ 
               backgroundColor: 'primary.main',
@@ -96,7 +73,7 @@ export default function HorizontalCarousel({ cards }) {
             textAlign='left' 
             paddingTop="32px"
           >
-            Most popular destinations around the world, from historical places to natural wonders.
+            {detail}
           </Typography>
         </Box>
         
@@ -108,26 +85,26 @@ export default function HorizontalCarousel({ cards }) {
           display={isMobile ? 'none' : 'box'}
         >
           <Button
-            onClick={scrollPrev}
+            onClick={onPrevButtonClick}
             variant="contained"
             sx={{
               height: '66px',
               width: '60px',
               padding: 0
             }}
-            disabled={!canScrollPrev}
+            disabled={prevBtnDisabled}
           >
             <NavigateBeforeIcon />
           </Button>
           <Button
-            onClick={scrollNext}
+            onClick={onNextButtonClick}
             variant="contained"
             sx={{
               height: '66px',
               width: '60px',
               padding: 0
             }}
-            disabled={!canScrollNext}
+            disabled={nextBtnDisabled}
           >
             <NavigateNextIcon />
           </Button>
@@ -136,49 +113,27 @@ export default function HorizontalCarousel({ cards }) {
       
       {/* Embla container (carousel) */}
       <Box
+        className="embla__viewport"
         ref={emblaRef}
         sx={{
           overflow: 'hidden', 
           paddingTop: '100px',
         }}
       >
-        {/* inside container */}
-        <Box
-          sx={{
-            display: 'flex',
-          }}
-        >
-          {carouselPages.map((pageOfCards, pageIndex) => (
-            <Box
-              key={`carousel-page-${pageIndex}`}
+        <Box className="embla__container" sx={{ display: 'flex'}}>
+          {cards.map((card, index) => (
+            <Box 
+              key={index} 
+              className="embla__slide"
               sx={{
-                flexShrink: 0,
-                flexGrow: 0,
-                flexBasis: isMobile ? '100%' : 'none', 
-                minWidth: 0, 
+                flex: `0 0 ${isMobile ? '100%' : `${100 / 3}%`}`,
+                minWidth: 0,
+                display: 'flex',
+                justifyContent: 'center',
                 padding: 1
               }}
-              role="group"
-              aria-roledescription="slide"
             >
-              {/* Stack for cards */}
-              <Stack direction="row">
-                {pageOfCards.map((card, cardIndex) => (
-                  <Box
-                    key={`card-${pageIndex}-${cardIndex}`}
-                    sx={{
-                      flexShrink: 0,
-                      flexGrow: 1,
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      pr: isMobile ? 0 : (cardIndex < cardsPerPage - 1 ? 2 : 0)
-                    }}
-                  >
-                    {card}
-                  </Box>
-                ))}
-              </Stack>
+              {card}
             </Box>
           ))}
         </Box>
@@ -193,26 +148,26 @@ export default function HorizontalCarousel({ cards }) {
         display={isMobile ? 'box' : 'none'}
       >
         <Button
-          onClick={scrollPrev}
+          onClick={onPrevButtonClick}
           variant="contained"
           sx={{
             height: '66px',
             width: '60px',
             padding: 0
           }}
-          disabled={!canScrollPrev}
+          disabled={prevBtnDisabled}
         >
           <NavigateBeforeIcon />
         </Button>
         <Button
-          onClick={scrollNext}
+          onClick={onNextButtonClick}
           variant="contained"
           sx={{
             height: '66px',
             width: '60px',
             padding: 0
           }}
-          disabled={!canScrollNext}
+          disabled={nextBtnDisabled}
         >
           <NavigateNextIcon />
         </Button>

@@ -7,7 +7,8 @@ export default [
     price: '€85/Day',
     title: 'Ancient Rome Walk',
     rating: 4,
-    time: '5 Days tour'
+    time: '5 Days tour',
+    img: '/trip-planner/rome-italy.jpg',
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ export default [
     price: '€99/Day',
     title: 'Paris City Tour',
     rating: 5,
-    time: '7 Days tour'
+    time: '7 Days tour',
+    img: '/trip-planner/paris-france.jpg',
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ export default [
     price: '€89/Day',
     title: 'Madrid Highlights',
     rating: 4,
-    time: '6 Days tour'
+    time: '6 Days tour',
+    img: '/trip-planner/madrid-spain.jpg',
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ export default [
     price: '€79/Day',
     title: 'Budapest Discovery',
     rating: 4,
-    time: '4 Days tour'
+    time: '4 Days tour',
+    img: '/trip-planner/budapest-hungary.jpg',
   }
 ]

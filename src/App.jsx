@@ -27,7 +27,6 @@ export default function App() {
           >
             <NavBar />
           </Box>
-            
            <Box
             sx={{ 
               gridColumn: {xs:'1 / -1', sm:'1 / -2', md:'1 / -5'}, 
@@ -65,7 +64,7 @@ export default function App() {
           <BookMenu />
         </Box>
       </Box>
-      {/* Explore Section */}
+      {/* Popular Destinations */}
       <Box component="section" id='explore' 
         sx={{
           position: 'relative',
@@ -77,14 +76,31 @@ export default function App() {
           <CarouselDataMapper type='popular-destinations'/>
         </MyContainer>
       </Box>
-      <Box component="section" id='travel' className="h-[400px]">
-        <Typography variant='h1'>Special offer section</Typography>
+      {/* Special Offer */}
+      <Box component="section" id='travel' 
+        sx={{
+          position: 'relative',
+          padding: '0'
+        }}
+      >
+        <MyContainer>
+          <CarouselDataMapper type='special-offer'/>
+        </MyContainer>
       </Box>
+      {/* Blog */}
       <Box component="section" id='blog' className="h-[400px]">
         <Typography variant='h1'>Blog section</Typography>
       </Box>
-      <Box component="section" id='pricing' className="h-[400px]">
-        <Typography variant='h1'>Trip planners section</Typography>
+      {/* Trip Planners */}
+      <Box component="section" id='pricing'
+        sx={{
+          position: 'relative',
+          padding: '0'
+        }}
+      >
+        <MyContainer>
+          <CarouselDataMapper type='trip-planners'/>
+        </MyContainer>
       </Box>
       <Box component="section" className="h-[400px]">
         <Typography variant='h1'>Gallery section</Typography>

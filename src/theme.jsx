@@ -43,6 +43,16 @@ let theme = createTheme({
             fontSize: '18px',
             color: '#767E86'
         },
+        h3: { 
+            fontFamily: 'Playfair Display, serif',
+            fontSize: '28px',
+            color: '#172432'
+        },
+        h4: { 
+          fontFamily: 'Rubik, serif',
+          fontSize: '32px',
+          color: '#FF7757'
+        },
         button: { fontSize: '20px', textTransform: 'capitalize'},
     },
     shape: { borderRadius: 12 },
@@ -65,15 +75,6 @@ let theme = createTheme({
             },
           },
         },
-        MuiSvgIcon: {
-          styleOverrides: {
-            root: {
-              fontSize: '16px',
-              color: '#ffffff',
-            },
-          },
-        },
-
         MuiIconButton: {
           styleOverrides: {
             root: {
@@ -88,7 +89,6 @@ let theme = createTheme({
             },
           },
         },
-
         MuiInputAdornment: {
           styleOverrides: {
             root: {
@@ -161,6 +161,16 @@ let theme = createTheme({
               />
             ),
           },
+        },
+        MuiRating: {
+          styleOverrides: {
+            iconFilled: {
+              color: '#ffb400',
+            },
+            iconEmpty: {
+              color: '#ccc',
+            }
+          }
         },
     },
 });
