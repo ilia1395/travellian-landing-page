@@ -13,7 +13,7 @@ export default function SpecialOffersCard({ city, country, details, rating, pric
     >      
       <CardMedia
         sx={{ 
-          height: '675px',
+          height: '288px',
           position: 'relative' 
         }}
         image={img}

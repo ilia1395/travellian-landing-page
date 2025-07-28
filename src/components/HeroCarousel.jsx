@@ -53,7 +53,7 @@ export default function HeroCarousel() {
             top-0 
             left-0 
             w-full 
-            h-full 
+            h-full
             object-cover 
             transition-opacity 
             duration-1000 
@@ -69,7 +69,7 @@ export default function HeroCarousel() {
           display: { xs: 'none', sm: 'flex' },
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }} 
         >
         <Stack 

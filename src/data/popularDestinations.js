@@ -4,27 +4,27 @@ export default [
     country: 'Germany',
     city: 'Berlin',
     destination: 'Monument of Berlin',
-    img: '/germany-berlin.jpg'
+    img: '/raw/germany-berlin.jpg'
   },
   {
     id: 2,
     country: 'United Kingdom',
     city: 'London',
     destination: 'Millenium Bridge',
-    img: '/uk-london.jpg'
+    img: '/raw/uk-london.jpg'
   },
   {
     id: 3,
     country: 'Italy',
     city: 'Venice',
     destination: 'Rialto Bridge',
-    img: '/italy-venice.jpg'
+    img: '/raw/italy-venice.jpg'
   },
   {
     id: 4,
     country: 'Portugal',
     city: 'Lisbon',
     destination: 'Sea of Orange Tiles',
-    img: '/portugal-lisbon.jpg'
+    img: '/raw/portugal-lisbon.jpg'
   }
 ]

@@ -8,18 +8,17 @@ import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 
-export default function HorizontalCarousel({ cards, direction, title, detail }) {
+import SectionTitle from './SectionTitle'
+
+export default function HorizontalCarousel({ cards, direction, sectionTitle, sectionDetail }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start' }, [Autoplay()])
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  // console.log(isMobile)
 
   const onNavButtonClick = useCallback((emblaApi) => {
     const autoplay = emblaApi?.plugins()?.autoplay
@@ -48,34 +47,16 @@ export default function HorizontalCarousel({ cards, direction, title, detail }) 
         height: 'auto',
         width: '100%',
         paddingTop:{xs:'80px', md:'100px', lg:'140px'},
-        paddingBottom:{sm:'80px', md:'100px', lg:'140px'}
       }}
     >
       {/* Title & Navigation buttons */}
       <Box
         display={'flex'}
-        gap={'50%'}
         flexDirection= {direction}
-        justifyContent={'space-around'}
+        justifyContent={'space-between'}
       >
         {/* Title */}
-        <Box>
-          <Typography variant='h1' textAlign='left'gutterBottom>{title}</Typography>
-          <Divider 
-            sx={{ 
-              backgroundColor: 'primary.main',
-              width: {xs: '227px', sm: '365px'},
-              height: '3px',
-            }}
-          />
-          <Typography 
-            variant='h2' 
-            textAlign='left' 
-            paddingTop="32px"
-          >
-            {detail}
-          </Typography>
-        </Box>
+        <Box sx={{ width:{xs:'100%', md:'50%'} }}><SectionTitle title={sectionTitle} detail={sectionDetail}/></Box>
         
         {/* Desktop Navigation buttons */}
         <Stack

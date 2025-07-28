@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import MyContainer from './components/Container'
 import BookMenu from './components/BookMenu'
 import HeroCarousel from './components/HeroCarousel'
-import CarouselDataMapper from './components/CarouselDataMapper'
+import SectionDataMapper from './components/SectionDataMapper'
 
 export default function App() {
 
@@ -16,7 +16,7 @@ export default function App() {
         sx={{
           position:'relative',
           padding:'0',
-          height:{xs:'1210px', sm:'789px', md:'880px', lg:'1194px'},
+          height:{xs:'1000px'},
         }}
       >
         <MyContainer>
@@ -30,7 +30,7 @@ export default function App() {
            <Box
             sx={{ 
               gridColumn: {xs:'1 / -1', sm:'1 / -2', md:'1 / -5'}, 
-              paddingTop: {xs:'100px', sm:'100px', md:'72px', lg:'142px'},
+              paddingTop: {xs:'100px'},
               alignSelf: 'start',
               }}
           >
@@ -47,7 +47,6 @@ export default function App() {
             sx={{ 
               gridColumn: {sm:'8 / -2', md:'-2 / -1'},
               justifySelf: 'end',
-              width: '16px',
               paddingTop: {sm:'100px', md:'166px', lg:'176px', xl:'355px'},
             }}
           >
@@ -58,7 +57,7 @@ export default function App() {
         <Box sx={{ 
           position: 'absolute', 
           padding:{xs: '16px', sm: '0'},
-          marginTop: {xs:'100px', sm:'0'}, 
+          marginTop: {xs:'100px', sm:'0'},
           }}
         >
           <BookMenu />
@@ -73,7 +72,7 @@ export default function App() {
       >
         <MyContainer>
           {/* Carousel */}
-          <CarouselDataMapper type='popular-destinations'/>
+          <SectionDataMapper type='popular-destinations'/>
         </MyContainer>
       </Box>
       {/* Special Offer */}
@@ -84,12 +83,19 @@ export default function App() {
         }}
       >
         <MyContainer>
-          <CarouselDataMapper type='special-offer'/>
+          <SectionDataMapper type='special-offer'/>
         </MyContainer>
       </Box>
       {/* Blog */}
-      <Box component="section" id='blog' className="h-[400px]">
-        <Typography variant='h1'>Blog section</Typography>
+      <Box component="section" id='blog'
+        sx={{
+          position: 'relative',
+          padding: '0'
+        }}
+      >
+        <MyContainer>
+          <SectionDataMapper type='blog'></SectionDataMapper>
+        </MyContainer>
       </Box>
       {/* Trip Planners */}
       <Box component="section" id='pricing'
@@ -99,17 +105,32 @@ export default function App() {
         }}
       >
         <MyContainer>
-          <CarouselDataMapper type='trip-planners'/>
+          <SectionDataMapper type='trip-planners'/>
         </MyContainer>
       </Box>
-      <Box component="section" className="h-[400px]">
-        <Typography variant='h1'>Gallery section</Typography>
+      {/* Destination Gallery */}
+      <Box component="section" 
+        sx={{
+          position: 'relative',
+          padding: '0'
+        }}
+      >
+        <MyContainer>
+          <SectionDataMapper type='destination-gallery' />
+        </MyContainer>
       </Box>
+      {/* Traveler Experiences */}
       <Box component="section" className="h-[400px]">
-        <Typography variant='h1'>Destinations section</Typography>
+        <MyContainer>
+          <Typography variant='h1'>Traveler experiences</Typography>
+        </MyContainer>
+        
       </Box>
+      {/* Footer */}
       <Box>
-        <Typography variant='h1'>footer</Typography>
+        <MyContainer>
+          <Typography variant='h1'>footer</Typography>
+        </MyContainer>
       </Box>
     </>
   )
