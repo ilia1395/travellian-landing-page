@@ -1,5 +1,8 @@
+import HorizontalCarousel from './HorizontalCarouselSection'
+
 import sectionTitles from '../data/sectionTitles'
-import SectionTitle from './SectionTitle'
+
+import HeroSection from './HeroSection'
 
 import destinations from '../data/popularDestinations'
 import PopularDestinationsCard from './Layouts/PopularDestinationsCard'
@@ -13,11 +16,13 @@ import TripPlannersCard from './Layouts/TripPlannersCard'
 import blogData from '../data/blog'
 import BlogCard from './BlogSection'
 
-import destinationsGallery from '../data/destinationGallery'
+import destinationsGalleryData from '../data/destinationGallery'
 import DestinationGalleryCard from './Layouts/DestinationGalleryCard'
 
-import HorizontalCarousel from './HorizontalCarouselSection'
-import { cardMediaClasses } from '@mui/material/CardMedia'
+import travelerExperiencesData from '../data/travelersExperiences'
+import TravelerExperiencesCard from './Layouts/TravelerExperiencesCard'
+
+import Footer from './Footer'
 
 export default function SectionDataMapper({ type }) {
   let cards = []
@@ -25,55 +30,58 @@ export default function SectionDataMapper({ type }) {
   const section = sectionTitles.find(s => s.type === type) || {}
   const sectionTitle = section.title || "Section Title"
   const sectionDetail = section.detail || "Section Text"
-  let isCarousel = true
 
   switch (type) {
+    
+    case 'hero-section' :
+      return <HeroSection sectionTitle={sectionTitle} sectionDetail={sectionDetail}/>
+      break
     case 'popular-destinations' :
       cards = destinations.map((item) => (
         <PopularDestinationsCard key={item.id} {...item} />
       ))
       direction = 'row'
-      isCarousel = true
       break
     case 'special-offer':
       cards = offers.map((item) => (
-        <SpecialOffersCard key={item.id} {...item}/>
+        <SpecialOffersCard key={item.id} {...item} />
       ))
       direction = 'row-reverse'
-      isCarousel = true
       break
     case 'blog':
-      cards = blogData.map((item) => (
-        <BlogCard key={item.id} {...item} sectionTitle={sectionTitle} sectionDetail={sectionDetail}/>
-      ))
-      direction = 'row-reverse'
-      isCarousel = false
+      return <BlogCard 
+              img={blogData.img} 
+              title={blogData.title} 
+              subtitle={blogData.subtitle} 
+              text={blogData.text}
+              sectionTitle={sectionTitle}
+              sectionDetail={sectionDetail} />
       break
     case 'trip-planners':
       cards = tripPlanners.map((item) => (
-        <TripPlannersCard key={item.id} {...item}/>
+        <TripPlannersCard key={item.id} {...item} />
       ))
       direction = 'row-reverse'
-      isCarousel = true
       break
     case 'destination-gallery':
-      cards = destinationsGallery.map((item) => (
-        <DestinationGalleryCard key={item.id} {...item}/>
+      cards = destinationsGalleryData.map((item) => (
+        <DestinationGalleryCard key={item.id} {...item} />
       ))
       direction = 'row'
-      isCarousel = true
       break
+    case 'traveler-experiences':
+      cards = travelerExperiencesData.map((item) => (
+        <TravelerExperiencesCard key={item.id} {...item} />
+      ))
+      direction = 'row'
+      break
+    case 'footer':
+      return <Footer />
     default:
-      cards = []
+      return <></>
   }
 
   return (
-    <>
-    {isCarousel ? (
-      <HorizontalCarousel cards={cards} direction={direction} sectionTitle={sectionTitle} sectionDetail={sectionDetail}/>
-    ) : (
-      cards
-    )}
-    </>
+    <HorizontalCarousel cards={cards} direction={direction} sectionTitle={sectionTitle} sectionDetail={sectionDetail} />
   );
 }

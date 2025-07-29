@@ -12,7 +12,7 @@ export default function PopularDestinationsCard({ destination, city, country, im
       <CardActionArea>        
         <CardMedia
           sx={{ 
-            height: '675px',
+            height: {xs:'320px', md:'675px'},
             position: 'relative'
           }}
           image={img}
@@ -28,7 +28,7 @@ export default function PopularDestinationsCard({ destination, city, country, im
               {destination}
               </Typography>
               <Stack direction='row' spacing={1}>
-                <LocationPinIcon sx={{ fontSize: '28px' }}/>
+                <LocationPinIcon sx={{ fontSize: '28px', color:'white' }}/>
                 <Typography variant="h2" color='primary.contrastText'> {city}, {country} </Typography>
               </Stack>
             </Stack>

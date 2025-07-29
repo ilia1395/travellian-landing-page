@@ -51,7 +51,6 @@ export default function BookingForm() {
             size={{xs: 12, sm: 9, md: 10}}
             sx={{
                 overflow: 'hidden',
-                // display: showForm ? 'box' : 'flex',
                 maxWidth: showForm ? {sx: 'auto', sm: '489px', md: '886px', lg: '1035px', xl: '1303px'} : '0',
                 maxHeight: showForm ? {sx: '467px', sm: '216px', md: '176px', lg: '216px'} : '0',
                 transition: {
@@ -152,7 +151,7 @@ export default function BookingForm() {
               onClick = {handleClick}
               sx={{
                 height: '100%',   
-                fontSize: '36px',
+                fontSize: {xs:'24px', md:'36px'},
                 textAlign:'left',
                 borderTopRightRadius: {xs: '0', sm: '16px'},
                 borderBottomRightRadius: {xs: '16px', sm: '16px'},

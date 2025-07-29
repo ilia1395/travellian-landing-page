@@ -46,7 +46,7 @@ export default function HorizontalCarousel({ cards, direction, sectionTitle, sec
         gridColumn: '1 / -1',
         height: 'auto',
         width: '100%',
-        paddingTop:{xs:'80px', md:'100px', lg:'140px'},
+        marginBottom:{xs:'80px', md:'100px', lg:'140px'},
       }}
     >
       {/* Title & Navigation buttons */}

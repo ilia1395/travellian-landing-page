@@ -14,7 +14,7 @@ export default function BlogCard({ img, title, subtitle, text, sectionTitle, sec
         gridColumn: '1 / -1',
         height: 'auto',
         width: '100%',
-        paddingTop:{xs:'80px', md:'100px', lg:'140px'},
+        marginBottom:{xs:'80px', md:'100px', lg:'140px'},
       }}
     >
       <Box sx={{ width:{xs:'100%', md:'50%'} }}><SectionTitle title={sectionTitle} detail={sectionDetail} /></Box>
@@ -29,7 +29,7 @@ export default function BlogCard({ img, title, subtitle, text, sectionTitle, sec
       >
         <CardMedia
           sx={{ 
-            height: '873px',
+            height: {xs:'314px', md:'873px'},
             width: {xs:'100%', md:'50%'},
             borderRadius: '20px',
           }}

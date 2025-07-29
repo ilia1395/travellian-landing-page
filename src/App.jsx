@@ -17,51 +17,10 @@ export default function App() {
           position:'relative',
           padding:'0',
           height:{xs:'1000px'},
+          marginBottom:{xs:'80px', md:'100px', lg:'140px'},
         }}
       >
-        <MyContainer>
-          <Box 
-            sx={{ 
-              gridColumn: '1 / -1',
-              }}
-          >
-            <NavBar />
-          </Box>
-           <Box
-            sx={{ 
-              gridColumn: {xs:'1 / -1', sm:'1 / -2', md:'1 / -5'}, 
-              paddingTop: {xs:'100px'},
-              alignSelf: 'start',
-              }}
-          >
-            <Typography variant='h1' color='secondary.contrastText' gutterBottom>
-              Start your unforgettable 
-              journey with us.
-            </Typography>
-            <Typography variant='h2' color='secondary.contrastText'>
-              The best travel for your jouney begins now
-            </Typography>
-          </Box>
-          
-          <Box 
-            sx={{ 
-              gridColumn: {sm:'8 / -2', md:'-2 / -1'},
-              justifySelf: 'end',
-              paddingTop: {sm:'100px', md:'166px', lg:'176px', xl:'355px'},
-            }}
-          >
-            <HeroCarousel/>
-          </Box>
-        </MyContainer>
-
-        <Box sx={{ 
-          position: 'absolute', 
-          padding:{xs: '16px', sm: '0'},
-          marginTop: {xs:'100px', sm:'0'},
-          }}
-        >
-          <BookMenu />
-        </Box>
+        <SectionDataMapper type="hero-section" />
       </Box>
       {/* Popular Destinations */}
       <Box component="section" id='explore' 
@@ -120,16 +79,26 @@ export default function App() {
         </MyContainer>
       </Box>
       {/* Traveler Experiences */}
-      <Box component="section" className="h-[400px]">
+      <Box component="section" 
+        sx={{
+          position: 'relative',
+          padding: '0'
+        }}
+      >
         <MyContainer>
-          <Typography variant='h1'>Traveler experiences</Typography>
+          <SectionDataMapper type='traveler-experiences' />
         </MyContainer>
         
-      </Box>
+      </Box >
       {/* Footer */}
-      <Box>
+      <Box component="section"
+         sx={{
+          position: 'relative',
+          padding: '0'
+        }}
+      >
         <MyContainer>
-          <Typography variant='h1'>footer</Typography>
+          <SectionDataMapper type="footer" />
         </MyContainer>
       </Box>
     </>

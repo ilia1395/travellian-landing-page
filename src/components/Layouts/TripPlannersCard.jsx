@@ -23,7 +23,7 @@ export default function TripPlannersCard({ country, city, type, price, title, ra
         <CardContent>
           <Box display='flex' direction='row' justifyContent='space-between'>
             <Typography variant='h2'>{type}</Typography>
-            <Typography variant='h2' sx={{ color:'black', fontWeight:'bold', letterSpacing:'2px' }} gutterBottom>{price}</Typography>
+            <Typography variant='h2' sx={{ color:'black', letterSpacing:'2px' }} gutterBottom>{price}</Typography>
           </Box>
           
           <Typography variant='h3' gutterBottom>{title}</Typography>

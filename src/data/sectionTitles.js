@@ -1,5 +1,10 @@
 export default [
   {
+    type: "hero-section",
+    title: "Start your unforgettable journey with us.",
+    detail: "The best travel for your jouney begins now"
+  },
+  {
     type: "popular-destinations",
     title: "Popular Destinations",
     detail: "Most popular destinations around the world, from historical places to natural wonders."

@@ -53,6 +53,12 @@ let theme = createTheme({
           fontSize: '32px',
           color: '#FF7757'
         },
+        h5: { 
+          fontFamily: 'Rubik, serif',
+          fontSize: '24px',
+          fontWeight: 'bold',
+          color: '#FFFFFF'
+        },
         button: { fontSize: '20px', textTransform: 'capitalize'},
     },
     shape: { borderRadius: 12 },
