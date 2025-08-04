@@ -1,4 +1,4 @@
-# Travellian = Travel Agency Landing Page
+# Travellian - Travel Agency Landing Page
 
 ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react)
 ![Material UI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
@@ -9,7 +9,9 @@ Study project. Landing page for travel agency with responsive design, carousels 
 ## Demo - [Open on vercel](..upload on vercel)
 
 ## Preview
-![Screenshot](./screenshots/responsive-layout.jpg)
+<a href="./screenshots/responsive-layout.jpg" target="_blank">
+  <img src="./screenshots/responsive-layout.jpg" alt="Preview" width="400"/>
+</a>
 
 ## Functionality
 - Nav bar menu
