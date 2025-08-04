@@ -6,7 +6,7 @@
 ## Description
 Study project. Landing page for travel agency with responsive design, carousels and booking form.
 
-## Demo - [Open on vercel](..upload on vercel)
+## Demo - [Open on vercel](https://travellian-landing-page.vercel.app/)
 
 ## Preview
 <a href="./screenshots/responsive-layout.jpg" target="_blank">
