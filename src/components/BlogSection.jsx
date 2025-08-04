@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 
 import SectionTitle from './SectionTitle'
 
-export default function BlogCard({ img, title, subtitle, text, sectionTitle, sectionDetail }) {
+export default function BlogSection({ img, title, subtitle, text, sectionTitle, sectionDetail }) {
   
   return (
     <Box

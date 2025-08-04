@@ -1,12 +1,29 @@
-# React + Vite
+# Travellian = Travel Agency Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react)
+![Material UI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
 
-Currently, two official plugins are available:
+## Description
+Study project. Landing page for travel agency with responsive design, carousels and booking form.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo - [Open on vercel](..upload on vercel)
 
-## Expanding the ESLint configuration
+## Preview
+![Screenshot](./screenshots/responsive-layout.jpg)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Functionality
+- Nav bar menu
+- Booking form
+- 2 types of carousels
+- Flexible and adaptive layout
+- All Data centralized in one component
+- All visual customizations in theme.js
+
+## Tech stack
+- React 
+- JavaScript
+- MUI 
+- Tailwind
+
+## Credits
+Design by [Al Razi Siam]: https://www.figma.com/design/anXxOCGj50oRJcY965fNzo/Travellian---Travel-Agency-Landing-Page--Community-?node-id=3-43&p=f&t=3e2GHMrRnTeQs7ru-0

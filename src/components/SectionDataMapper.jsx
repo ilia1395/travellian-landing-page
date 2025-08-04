@@ -14,7 +14,7 @@ import tripPlanners from '../data/tripPlanners'
 import TripPlannersCard from './Layouts/TripPlannersCard'
 
 import blogData from '../data/blog'
-import BlogCard from './BlogSection'
+import BlogSection from './BlogSection'
 
 import destinationsGalleryData from '../data/destinationGallery'
 import DestinationGalleryCard from './Layouts/DestinationGalleryCard'
@@ -49,7 +49,7 @@ export default function SectionDataMapper({ type }) {
       direction = 'row-reverse'
       break
     case 'blog':
-      return <BlogCard 
+      return <BlogSection 
               img={blogData.img} 
               title={blogData.title} 
               subtitle={blogData.subtitle} 
