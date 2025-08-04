@@ -17,6 +17,8 @@ export default function TripPlannersCard({ country, city, type, price, title, ra
             height: '399px',
             position: 'relative' 
           }}
+          component='img'
+          loading='lazy'
           image={img}
           title={`${city}, ${country}`}
         />

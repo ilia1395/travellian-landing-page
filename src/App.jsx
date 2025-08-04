@@ -1,10 +1,6 @@
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-
-import NavBar from './components/NavBar'
 import MyContainer from './components/Container'
-import BookMenu from './components/BookMenu'
-import HeroCarousel from './components/HeroCarousel'
+
 import SectionDataMapper from './components/SectionDataMapper'
 
 export default function App() {

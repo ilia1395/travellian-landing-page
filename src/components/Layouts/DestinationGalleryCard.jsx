@@ -14,6 +14,8 @@ export default function DestinationGalleryCard({ img }) {
             height: '570px',
             position: 'relative'
           }}
+          component='img'
+          loading='lazy'
           image={img}
         />
       </CardActionArea>

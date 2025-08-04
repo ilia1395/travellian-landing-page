@@ -1,10 +1,7 @@
 import Card from '@mui/material/Card'
-import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import CardActionArea from '@mui/material/CardActionArea'
-import LocationPinIcon from '@mui/icons-material/LocationPin';
 import Rating from '@mui/material/Rating'
 
 export default function TravelerExperiencesCard({ img, review, rating, name, job }) {
@@ -18,6 +15,8 @@ export default function TravelerExperiencesCard({ img, review, rating, name, job
           borderRadius: '50%',
           marginLeft: '40px'
         }}
+        component='img'
+        loading='lazy'
         image={img}
         title={`${name}`}
       />

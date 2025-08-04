@@ -15,6 +15,8 @@ export default function PopularDestinationsCard({ destination, city, country, im
             height: {xs:'320px', md:'675px'},
             position: 'relative'
           }}
+          // component='img'
+          loading='lazy'
           image={img}
           title={`${city}, ${country}`}
         >
