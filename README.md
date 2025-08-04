@@ -26,4 +26,4 @@ Study project. Landing page for travel agency with responsive design, carousels 
 - Tailwind
 
 ## Credits
-Design by [Al Razi Siam]: https://www.figma.com/design/anXxOCGj50oRJcY965fNzo/Travellian---Travel-Agency-Landing-Page--Community-?node-id=3-43&p=f&t=3e2GHMrRnTeQs7ru-0
+Design: [Al Razi Siam](https://www.figma.com/design/anXxOCGj50oRJcY965fNzo/Travellian---Travel-Agency-Landing-Page--Community-?node-id=3-43&p=f&t=3e2GHMrRnTeQs7ru-0)
